@@ -78,9 +78,24 @@ task
   margin: 0 0 20px;
 }
 
-.form {
+.search {
   position: relative;
   margin: 0 0 30px;
+}
+.search button {
+  background: none;
+  border: none;
+  color: #4ec5c1;
+  font-size: 18px;
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+}
+
+.form {
+  position: relative;
+  margin: 0 0 10px;
 }
 
 .form button {
@@ -114,7 +129,7 @@ task
   background: #333;
 }
 
-.pendingTasks {
+.leftTasks {
   padding: 0 6px;
 }
 
@@ -129,7 +144,25 @@ task items
 .taskItems li {
   display: flex;
   justify-content: space-between;
+  align-items: center; 
   margin: 0 0 20px;
+}
+
+.taskItems li button {
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+}
+
+.taskItems li button:first-child + button {
+  flex-grow: 1; 
+  text-align: left;
+  margin-left: 10px; 
+}
+
+.taskItems li button:last-child {
+  margin-left: auto; 
 }
 
 .taskItems button {

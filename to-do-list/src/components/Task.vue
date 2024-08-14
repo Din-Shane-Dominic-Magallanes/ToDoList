@@ -1,36 +1,38 @@
 <template>
     <div class="container">
       <div class="task">
-        <!-- title -->
+        <!-- Header -->
         <div class="title">
           <h1>To Do List</h1>
         </div>
-        <!-- form -->
-        <div class="form">
-          <input type="text" placeholder="New Task" />
-          <button><i class="fas fa-plus"></i></button>
+        <!-- Search -->
+        <div class="search">
+          <input type="text" placeholder="Search Task" />
+          <button><font-awesome-icon :icon="['fas', 'search']" /></button>
         </div>
-        <!-- task lists -->
+        <!-- Task lists -->
         <div class="taskItems">
           <ul>
-            <li>
-              <button>Learn Vue JS</button>
-              <button><i class="far fa-trash-alt"></i></button>
-            </li>
-            <li>
-              <button>Watch netflix</button>
-              <button><i class="far fa-trash-alt"></i></button>
+            <li v-for="task in tasks" :key="task.id" :class="{'toggle-completed': task.completed}">
+              <button @click="toggle(task)"><font-awesome-icon :icon="task.completed ? ['fas', 'check-circle'] : ['far', 'circle']" /></button>
+              <button @click="toggle(task)">{{ task.title }}</button>
+              <button><font-awesome-icon :icon="['far', 'trash-alt']" /></button>
             </li>
           </ul>
         </div>
-        <!-- buttons -->
-        <div class="clearBtns">
-          <button>Clear completed</button>
-          <button>Clear all</button>
+        <!-- Form -->
+         <div class="form">
+          <input type="text" placeholder="New Task" />
+          <button><font-awesome-icon :icon="['fas', 'plus']" /></button>
         </div>
-        <!-- pending task -->
-        <div class="pendingTasks">
-          <span>Pending Tasks: </span>
+        <!-- Filters -->
+        <div class="clearBtns">
+          <button>Not Completed</button>
+          <button>Completed</button>
+        </div>
+        <!-- Left task -->
+        <div class="leftTasks">
+          <span>Left Tasks: </span>
         </div>
       </div>
     </div>
@@ -39,5 +41,22 @@
 <script>
   export default {
     name: "Task",
+    props: {
+      tasks: {
+        type: Array,
+        required: true,
+    },
+  },
+
+  methods: {
+    addTodo(){
+    
+    }
+
+    ,toggle(task){
+      task.completed = !task.completed;
+    }
+
+    }
   };
 </script>

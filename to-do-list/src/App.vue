@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <task></task>
+    <task :tasks="tasks"></task>
   </div>
 </template>
 
@@ -17,27 +17,27 @@ export default {
       tasks: [
         {
           id: 1,
-          title: "Learn Vue JS",
+          title: "Francis Aguila",
           completed: true,
         },
         {
           id: 2,
-          title: "Watch netflix",
+          title: "Troy Demafeliz",
           completed: true,
         },
         {
           id: 3,
-          title: "Go shopping",
+          title: "Troy Adriane",
           completed: false,
         },
         {
           id: 4,
-          title: "Learn guitar",
+          title: "Clint Gamolo",
           completed: false,
         },
         {
           id: 5,
-          title: "Send email",
+          title: "Stephen Ang",
           completed: false,
         },
       ],
