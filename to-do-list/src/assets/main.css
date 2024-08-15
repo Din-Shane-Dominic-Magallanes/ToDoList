@@ -109,13 +109,13 @@ task
   transform: translateY(-50%);
 }
 
-.clearBtns {
+.filterBtns {
   display: flex;
   justify-content: space-between;
   margin: 0 0 20px;
 }
 
-.clearBtns button {
+.filterBtns button {
   width: 100%;
   background: #4ec5c1;
   color: #fff;
@@ -125,7 +125,7 @@ task
   margin: 0 5px;
 }
 
-.clearBtns button:hover {
+.filterBtns button:hover {
   background: #333;
 }
 
