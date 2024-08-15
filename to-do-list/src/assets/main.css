@@ -116,6 +116,7 @@ task
 }
 
 .filterBtns button {
+  font-size: 14px;
   width: 100%;
   background: #4ec5c1;
   color: #fff;
@@ -172,13 +173,4 @@ task items
 
 .taskItems button:hover {
   color: #4ec5c1;
-}
-
-.taskItems .toggle i {
-  margin: 0 10px 0 0;
-  font-size: 14px;
-}
-
-.taskItems .toggle.toggle-completed {
-  text-decoration: line-through;
 }
