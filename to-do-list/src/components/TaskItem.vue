@@ -9,9 +9,12 @@
     <button @click="$emit('toggle', task)">
       {{ task.title }}
     </button>
-    <button @click="$emit('delete', task.id)">
-      <font-awesome-icon :icon="['far', 'trash-alt']" />
-    </button>
+    <div class="date-container">
+      <font-awesome-icon :icon="['far', 'calendar-alt']" />
+      <span class="date-text">
+        {{ new Date(task.date).toLocaleDateString() }}
+      </span>
+    </div>
   </li>
 </template>
 
@@ -24,6 +27,20 @@ export default {
 </script>
 
 <style scoped>
+
+.date-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: #888;
+  margin-left: 10px;
+}
+
+.date-text {
+  font-style: italic;
+}
+
 .heart-btn {
   background: none;
   border: none;

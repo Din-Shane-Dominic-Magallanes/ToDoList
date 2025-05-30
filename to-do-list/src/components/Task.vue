@@ -26,7 +26,10 @@ import TaskSummary from './TaskSummary.vue';
 export default {
   name: "Task",
   props: {
-    tasks: Array
+    tasks: {
+      type: Array,
+      default: () => []
+    }
   },
   components: {
     TaskHeader,
@@ -38,24 +41,32 @@ export default {
   },
   data() {
     return {
-      localTasks: [...this.tasks],
+      localTasks: [...this.tasks],  
       searchTerm: '',
       filter: 'all',
     };
   },
+  watch: {
+    tasks(newTasks) {
+      this.localTasks = [...newTasks];
+    }
+  },
   computed: {
     filteredTasks() {
       let tasks = this.localTasks;
+
       if (this.filter === 'completed') {
         tasks = tasks.filter(task => task.completed);
       } else if (this.filter === 'not-completed') {
         tasks = tasks.filter(task => !task.completed);
       }
+
       if (this.searchTerm) {
         tasks = tasks.filter(task =>
           task.title.toLowerCase().includes(this.searchTerm.toLowerCase())
         );
       }
+
       return tasks;
     },
     leftTasks() {

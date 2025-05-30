@@ -18,52 +18,33 @@ export default {
   data() {
     return {
       tasks: [
-        {
-          id: 1,
-          title: "First Date",
-          completed: true,
-        },
-        {
-          id: 2,
-          title: "Car Show",
-          completed: true,
-        },
-        {
-          id: 3,
-          title: "Dear Joe",
-          completed: false,
-        },
-        {
-          id: 4,
-          title: "Basketball",
-          completed: false,
-        },
-        {
-          id: 5,
-          title: "Graduation",
-          completed: false,
-        },
-      ],
+      ]
     };
   },
   
   mounted() {
-    this.fetchDates();
+    this.fetchTasks();
   },
+  
   methods: {
-    async fetchDates() {
+    async fetchTasks() {
       const { data, error } = await supabase
         .from("Date")
         .select("*")
-        .order("created_at", { ascending: true });
+        .order("date", { ascending: false });
 
       if (error) {
-        console.error("Error fetching dates:", error);
+        console.error("Error fetching tasks:", error);
       } else {
-        this.dates = data;
-        console.log("Fetched Dates:", this.dates);
+        console.log("Fetched tasks:", data);
+        this.tasks = data.map(item => ({
+          id: item.id,
+          title: item.date_name,
+          date: item.date,
+          completed: item.completed
+        }));
       }
-    },
-  },
+    }
+  }
 };
 </script>
