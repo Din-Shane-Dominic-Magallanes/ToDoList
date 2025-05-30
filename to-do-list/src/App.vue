@@ -6,7 +6,6 @@
 
 <script>
 import { supabase } from './utils/supabase'
-
 import Task from "./components/Task.vue";
 
 console.log(supabase);
@@ -46,6 +45,25 @@ export default {
         },
       ],
     };
+  },
+  
+  mounted() {
+    this.fetchDates();
+  },
+  methods: {
+    async fetchDates() {
+      const { data, error } = await supabase
+        .from("Date")
+        .select("*")
+        .order("created_at", { ascending: true });
+
+      if (error) {
+        console.error("Error fetching dates:", error);
+      } else {
+        this.dates = data;
+        console.log("Fetched Dates:", this.dates);
+      }
+    },
   },
 };
 </script>
