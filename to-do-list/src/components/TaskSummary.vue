@@ -1,6 +1,6 @@
 <template>
   <div class="leftTasks">
-    <span>Left Tasks: {{ count }}</span>
+    <span>Dates completed: {{ count }} and more to come!</span>
   </div>
 </template>
 
