@@ -5,7 +5,11 @@
 </template>
 
 <script>
+import { supabase } from './utils/supabase'
+
 import Task from "./components/Task.vue";
+
+console.log(supabase);
 
 export default {
   name: "App",
