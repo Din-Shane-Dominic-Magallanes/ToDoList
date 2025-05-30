@@ -10,12 +10,12 @@ general
 
 body {
   font: 15px/1.4 "Poppins", sans-serif;
-  background: #4ec5c1;
-  color: #333;
+  background: #ffe6f0;
+  color: #4d3d3d;
 }
 
 #app {
-  padding: 60px 0;
+  padding: 20px 0;
 }
 
 .container {
@@ -29,23 +29,32 @@ input[type="text"] {
   height: 50px;
   font: 15px/1.4 "Poppins", sans-serif;
   padding: 15px;
-  background: #f3f3f3;
-  color: #333;
-  border: 1px solid transparent;
-  border-radius: 10px;
+  background: #fff0f5;
+  color: #4d3d3d;
+  border: 1px solid #f9c6d1;
+  border-radius: 12px;
   transition: border 0.3s linear;
 }
 
 input[type="text"]:focus {
   outline: none;
-  border: 1px solid #4ec5c1;
+  border: 1px solid #ff7aa2;
+  background: #fff6fa;
 }
 
 button {
   cursor: pointer;
   font: 15px/1.4 "Poppins", sans-serif;
-  color: #555;
-  transition: all 0.3s linear;
+  color: #fff;
+  background: #ff7aa2;
+  border: none;
+  border-radius: 10px;
+  padding: 8px 16px;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: #e75480;
 }
 
 button:focus {
@@ -56,21 +65,15 @@ h1 {
   font-size: 22px;
 }
 
-ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
 /* 
 task 
 ----
 */
 .task {
-  background: #fff;
+  background: #ffffff;
   border-radius: 25px;
   padding: 30px;
-  box-shadow: 0px 0px 40px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 40px 0px rgba(255, 192, 203, 0.3);
 }
 
 .title {
@@ -78,14 +81,24 @@ task
   margin: 0 0 20px;
 }
 
+.title h1 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 32px;
+  color: #e75480;
+  text-shadow: 1px 1px 2px rgba(231, 84, 128, 0.3);
+}
+
 .search {
   position: relative;
   margin: 0 0 30px;
 }
+.search input {
+  padding-right: 45px;
+}
 .search button {
   background: none;
   border: none;
-  color: #4ec5c1;
+  color: #ff7aa2;
   font-size: 18px;
   position: absolute;
   top: 50%;
@@ -101,7 +114,7 @@ task
 .form button {
   background: none;
   border: none;
-  color: #4ec5c1;
+  color: #ff7aa2;
   font-size: 18px;
   position: absolute;
   top: 50%;
@@ -118,7 +131,7 @@ task
 .filterBtns button {
   font-size: 14px;
   width: 100%;
-  background: #4ec5c1;
+  background: #ff7aa2;
   color: #fff;
   border: none;
   border-radius: 10px;
@@ -127,11 +140,13 @@ task
 }
 
 .filterBtns button:hover {
-  background: #333;
+  background: #e75480;
 }
 
 .leftTasks {
   padding: 0 6px;
+  color: #e75480;
+  font-weight: bold;
 }
 
 /* 
@@ -145,8 +160,21 @@ task items
 .taskItems li {
   display: flex;
   justify-content: space-between;
-  align-items: center; 
-  margin: 0 0 20px;
+  align-items: center;
+  margin-bottom: 15px;
+  padding: 15px 20px;
+  border-radius: 12px;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 6px rgba(255, 105, 180, 0.1);
+}
+
+.taskItems li:not(.toggle-completed) {
+  background-color: #fbeff2;
+}
+
+.taskItems li.toggle-completed {
+  background-color: #f9d6dc;
+  text-decoration: line-through;
 }
 
 .taskItems li button {
@@ -154,6 +182,11 @@ task items
   border: none;
   display: flex;
   align-items: center;
+  color: #e75480;
+}
+
+.taskItems li button:hover {
+  color: #ff4f81;
 }
 
 .taskItems li button:first-child + button {
@@ -164,13 +197,4 @@ task items
 
 .taskItems li button:last-child {
   margin-left: auto; 
-}
-
-.taskItems button {
-  background: none;
-  border: none;
-}
-
-.taskItems button:hover {
-  color: #4ec5c1;
 }

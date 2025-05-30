@@ -17,27 +17,27 @@ export default {
       tasks: [
         {
           id: 1,
-          title: "Francis Aguila",
+          title: "First Date",
           completed: true,
         },
         {
           id: 2,
-          title: "Troy Demafeliz",
+          title: "Car Show",
           completed: true,
         },
         {
           id: 3,
-          title: "Troy Adriane",
+          title: "Dear Joe",
           completed: false,
         },
         {
           id: 4,
-          title: "Clint Gamolo",
+          title: "Basketball",
           completed: false,
         },
         {
           id: 5,
-          title: "Stephen Ang",
+          title: "Graduation",
           completed: false,
         },
       ],

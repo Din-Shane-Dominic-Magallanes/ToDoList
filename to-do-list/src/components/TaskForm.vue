@@ -1,7 +1,7 @@
 <template>
   <div class="form">
-    <input v-model="localTask" type="text" placeholder="New Task" @keyup.enter="submitTask" />
-    <button @click="submitTask"><font-awesome-icon :icon="['fas', 'plus']" /></button>
+    <input v-model="localDate" type="text" placeholder="New Date" @keyup.enter="submitDate" />
+    <button @click="submitDate"><font-awesome-icon :icon="['fas', 'plus']" /></button>
   </div>
 </template>
 
@@ -9,14 +9,14 @@
 export default {
   data() {
     return {
-      localTask: ''
+      localDate: ''
     };
   },
   methods: {
-    submitTask() {
-      if (this.localTask.trim()) {
-        this.$emit('add', this.localTask);
-        this.localTask = '';
+    submitDate() {
+      if (this.localDate.trim()) {
+        this.$emit('add', this.localDate);
+        this.localDate = '';
       }
     }
   }
