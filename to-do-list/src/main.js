@@ -10,7 +10,6 @@ import { faTrashAlt, faCircle } from '@fortawesome/free-regular-svg-icons';
 import { faHeart as fasHeart } from '@fortawesome/free-solid-svg-icons'
 import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons'
 import { faCalendarAlt as farCalendarAlt } from '@fortawesome/free-regular-svg-icons';
-//import { faCalendar as fasCalendarAlt } from '@fortawesome/free-regular-svg-icons';
 
 library.add(faSearch, faPlus, faCheckCircle, faCircle, faTrashAlt, fasHeart, farHeart, farCalendarAlt);
 

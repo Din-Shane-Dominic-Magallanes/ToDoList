@@ -10,7 +10,7 @@
       />
       <TaskForm @add="addTodo" />
       <TaskFilters @filter="filterTasks" />
-      <TaskSummary :count="leftTasks" />
+      <TaskSummary :tasks="localTasks" />
     </div>
   </div>
 </template>
@@ -45,6 +45,12 @@ export default {
       searchTerm: '',
       filter: 'all',
     };
+  },
+  toggle(updatedTask) {
+    const index = this.localTasks.findIndex(task => task.id === updatedTask.id);
+    if (index !== -1) {
+      this.localTasks.splice(index, 1, updatedTask);
+    }
   },
   watch: {
     tasks(newTasks) {

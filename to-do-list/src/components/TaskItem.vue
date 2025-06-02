@@ -1,12 +1,12 @@
 <template>
   <li :class="{'toggle-completed': task.completed}">
-    <button @click="$emit('toggle', task)" class="heart-btn">
+    <button @click="toggleCompleted" class="heart-btn">
       <font-awesome-icon
         :icon="task.completed ? ['fas', 'heart'] : ['far', 'heart']"
         :class="{ animated: task.completed }"
       />
     </button>
-    <button @click="$emit('toggle', task)">
+    <button @click="toggleCompleted">
       {{ task.title }}
     </button>
     <div class="date-container">
@@ -19,11 +19,31 @@
 </template>
 
 <script>
+import { supabase } from '../utils/supabase'; // adjust path if needed
+
 export default {
   props: {
     task: Object
+  },
+  methods: {
+    async toggleCompleted() {
+      const updated = {
+        completed: !this.task.completed
+      };
+
+      const { error } = await supabase
+        .from('Date')
+        .update(updated)
+        .eq('id', this.task.id);
+
+      if (error) {
+        console.error('Failed to update task:', error.message);
+      } else {
+        this.$emit('toggle', { ...this.task, completed: updated.completed });
+      }
+    }
   }
-}
+};
 </script>
 
 <style scoped>

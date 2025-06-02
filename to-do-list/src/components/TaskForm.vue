@@ -17,8 +17,8 @@
             <input v-model="date" type="date" required />
           </label>
           <div class="buttons">
-            <button type="submit">Submit</button>
             <button type="button" @click="closeModal">Cancel</button>
+            <button type="submit">Submit</button>
           </div>
         </form>
       </div>
@@ -27,6 +27,9 @@
 </template>
 
 <script>
+
+import { supabase } from '../utils/supabase'
+
 export default {
   data() {
     return {
@@ -36,12 +39,29 @@ export default {
     };
   },
   methods: {
-    submitDate() {
+    async submitDate() {
       if (this.name.trim() && this.date) {
-        this.$emit('add', { name: this.name, date: this.date });
-        this.name = '';
-        this.date = '';
-        this.showModal = false;
+        const { error } = await supabase.from('Date').insert([
+          {
+            date_name: this.name,
+            date: this.date,
+            completed: false
+          }
+        ]);
+
+        if (error) {
+          console.error('Error adding date to Supabase:', error);
+          alert('There was a problem adding the date.');
+        } else {
+          this.$emit('add', {
+            title: this.name,
+            date: this.date,
+            completed: false
+          });
+          this.name = '';
+          this.date = '';
+          this.showModal = false;
+        }
       }
     },
     closeModal() {
